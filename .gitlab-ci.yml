@@ -1,0 +1,21 @@
+include:
+  - project: 'iac/catalog/gitlab-pipelines'
+    ref: main
+    file: 'docker-build.gitlab-ci.yml'
+
+variables:
+  REGISTRY_URL: "" 
+  IMAGE_NAME: iac-generic
+  IMAGE_VERSION: ${CI_COMMIT_TAG}
+
+validate:
+  stage: validate
+  only:
+    - tags
+
+build:
+  stage: build
+  only:
+    - tags
+  variables:
+    PUSH_LATEST: "true"

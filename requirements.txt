@@ -1,0 +1,6 @@
+ansible
+awscli
+azure-cli
+boto3
+botocore
+netaddr
